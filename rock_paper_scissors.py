@@ -1,4 +1,9 @@
 import random
+from colorama import init as colorama_init
+from colorama import Fore
+from colorama import Style
+
+colorama_init()
 
 rock = "Rock"
 paper = "Paper"
@@ -31,8 +36,8 @@ print(f"The computer chose {computer_move}")
 
 # Logic to determine the winner
 if player_move == rock and computer_move == scissors or player_move == paper and computer_move == rock or player_move == scissors and computer_move == paper:
-    print("You win!")
+    print(f"{Fore.GREEN}You win!{Style.RESET_ALL}")
 elif player_move == computer_move:
-    print("Draw!")
+    print(f"{Fore.YELLOW}Draw!{Style.RESET_ALL}")
 else:
-    print("You lose!")
+    print(f"{Fore.RED}You lose!{Style.RESET_ALL}")
