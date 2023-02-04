@@ -9,7 +9,7 @@ player_name = input("Enter Player Name:") or "Unknown player"
 
 player_score = 0
 computer_score = 0
-points_to_win = int(input("Choose number of games to win (min.1,max.10), default is 3 :")) or 3
+points_to_win = int(input("Choose number of games to win (min.1,max.10):"))
 if points_to_win not in range(1, 11):
     print("Invalid input.")
     points_to_win = int(input("Choose number of games to win (min.1,max.10, default is 3) :")) or 3
@@ -60,7 +60,7 @@ while True:
     # Logic to restart the game
     if player_score == points_to_win:
         print(f"Final score: {player_name}:[{player_score}] | Computer:[{computer_score}] ")
-        print(f"{player_name} won !")
+        print(f"{Fore.GREEN}{player_name} won !{Style.RESET_ALL}")
         player_score = 0
         computer_score = 0
         while True:
@@ -75,7 +75,7 @@ while True:
             break
     elif computer_score == points_to_win:
         print(f"Final score: {player_name}:[{player_score}] | Computer:[{computer_score}] ")
-        print(f"Computer won !")
+        print(f"{Fore.GREEN}Computer won !{Style.RESET_ALL}")
         player_score = 0
         computer_score = 0
         while True:
@@ -85,5 +85,5 @@ while True:
         if answer == "yes":
             continue
         if answer == "no":
-            print("Goodbye!")
+            print(f"{Fore.RED}Goodbye!{Style.RESET_ALL}")
             break
