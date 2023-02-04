@@ -70,7 +70,7 @@ while True:
         answer = input("Type [yes] to play again or [no] to quit:")
         if answer == "yes":
             continue
-        elif answer == "no":
+        if answer == "no":
             print("Goodbye!")
             break
     elif computer_score == points_to_win:
@@ -84,6 +84,6 @@ while True:
                 break
         if answer == "yes":
             continue
-        elif answer == "no":
+        if answer == "no":
             print("Goodbye!")
             break
