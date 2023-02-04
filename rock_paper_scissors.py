@@ -9,7 +9,11 @@ player_name = input("Enter Player Name:") or "Unknown player"
 
 player_score = 0
 computer_score = 0
-draws = 0
+points_to_win = int(input("Choose number of games to win (min.1,max.10), default is 3 :")) or 3
+if points_to_win not in range(1, 11):
+    print("Invalid input.")
+    points_to_win = int(input("Choose number of games to win (min.1,max.10, default is 3) :")) or 3
+
 
 while True:
     rock = "Rock"
@@ -47,22 +51,39 @@ while True:
         player_score += 1
         print(f"{Fore.GREEN}You win!{Style.RESET_ALL}")
     elif player_move == computer_move:
-        draws += 1
         print(f"{Fore.YELLOW}Draw!{Style.RESET_ALL}")
     else:
         computer_score += 1
         print(f"{Fore.RED}You lose!{Style.RESET_ALL}")
 
-    print(f"Current score: {player_name}:[{player_score}] | Draws:[{draws}] | Computer:[{computer_score}]")
+    print(f"Score: {player_name}:[{player_score}] | Computer:[{computer_score}]")
     # Logic to restart the game
-    while True:
-        answer = str(input("Type [yes] to play again, or [no] to quit:"))
-        if answer in ("yes", "no"):
+    if player_score == points_to_win:
+        print(f"Final score: {player_name}:[{player_score}] | Computer:[{computer_score}] ")
+        print(f"{player_name} won !")
+        player_score = 0
+        computer_score = 0
+        while True:
+            answer = input("Type [yes] to play again or [no] to quit:")
+            if answer in ("yes", "no"):
+                break
+        answer = input("Type [yes] to play again or [no] to quit:")
+        if answer == "yes":
+            continue
+        elif answer == "no":
+            print("Goodbye!")
             break
-        print("Invalid input.")
-    if answer == "yes":
-        continue
-    else:
-        print(f"Final score: Player:[{player_score}] | Draws:[{draws}] | Computer:[{computer_score}] ")
-        print("Goodbye!")
-        break
+    elif computer_score == points_to_win:
+        print(f"Final score: {player_name}:[{player_score}] | Computer:[{computer_score}] ")
+        print(f"Computer won !")
+        player_score = 0
+        computer_score = 0
+        while True:
+            answer = input("Type [yes] to play again or [no] to quit:")
+            if answer in ("yes", "no"):
+                break
+        if answer == "yes":
+            continue
+        elif answer == "no":
+            print("Goodbye!")
+            break
