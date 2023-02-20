@@ -87,3 +87,5 @@ while True:
         if answer == "no":
             print(f"{Fore.RED}Goodbye!{Style.RESET_ALL}")
             break
+
+"does it work on github ?"
